@@ -590,7 +590,7 @@ export default function App() {
   const slc={width:"100%",background:"#0F1929",border:"1px solid rgba(255,255,255,0.1)",borderRadius:10,padding:"11px 14px",color:"#F1F5F9",fontSize:14,cursor:"pointer",outline:"none",boxSizing:"border-box",minHeight:46};
 
   return (
-    <div style={{minHeight:"100vh",background:"#070C18",fontFamily:"'Inter',-apple-system,sans-serif",paddingBottom:80,color:"#F1F5F9",overflowX:"hidden"}}>
+    <div style={{minHeight:"100vh",background:"#070C18",fontFamily:"'Inter',-apple-system,sans-serif",paddingBottom:"calc(80px + env(safe-area-inset-bottom))",color:"#F1F5F9",overflowX:"hidden"}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         *{box-sizing:border-box;}
@@ -612,7 +612,7 @@ export default function App() {
       `}</style>
 
       {/* ════ HEADER ════ */}
-      <header style={{background:"#0B1120",borderBottom:"1px solid rgba(255,255,255,0.06)",position:"sticky",top:0,zIndex:50}}>
+      <header style={{background:"#0B1120",borderBottom:"1px solid rgba(255,255,255,0.06)",position:"sticky",top:0,zIndex:50,paddingTop:"env(safe-area-inset-top)"}}>
         <div style={{maxWidth:960,margin:"0 auto",padding:"0 16px",height:52,display:"flex",alignItems:"center",justifyContent:"space-between",gap:10}}>
           <span style={{fontSize:15,fontWeight:800,letterSpacing:"-0.5px",flexShrink:0}}>💸 DailySpend</span>
 
@@ -779,7 +779,7 @@ export default function App() {
       {showKeySt  && <ApiKeySettings onClose={()=>setShowKeySt(false)}/>}
 
       {/* Toast */}
-      {toast&&(<div role="alert" aria-live="assertive" style={{position:"fixed",bottom:24,left:"50%",transform:"translateX(-50%)",background:toast.type==="err"?"#1A0A0E":"#0F1E2E",border:toast.type==="err"?"1px solid rgba(252,165,165,0.45)":"1px solid rgba(110,231,183,0.35)",borderRadius:12,padding:"11px 22px",color:toast.type==="err"?"#FCA5A5":"#6EE7B7",fontSize:13,fontWeight:700,pointerEvents:"none",zIndex:400,boxShadow:"0 8px 32px rgba(0,0,0,0.5)",animation:"fadeUp 0.22s ease",whiteSpace:"nowrap"}}>
+      {toast&&(<div role="alert" aria-live="assertive" style={{position:"fixed",bottom:"calc(24px + env(safe-area-inset-bottom))",left:"50%",transform:"translateX(-50%)",background:toast.type==="err"?"#1A0A0E":"#0F1E2E",border:toast.type==="err"?"1px solid rgba(252,165,165,0.45)":"1px solid rgba(110,231,183,0.35)",borderRadius:12,padding:"11px 22px",color:toast.type==="err"?"#FCA5A5":"#6EE7B7",fontSize:13,fontWeight:700,pointerEvents:"none",zIndex:400,boxShadow:"0 8px 32px rgba(0,0,0,0.5)",animation:"fadeUp 0.22s ease",whiteSpace:"nowrap"}}>
         {toast.type==="err"?"⚠️ ":"✅ "}{toast.msg}
       </div>)}
     </div>
