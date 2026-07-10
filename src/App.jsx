@@ -590,7 +590,7 @@ export default function App() {
   const slc={width:"100%",background:"#0F1929",border:"1px solid rgba(255,255,255,0.1)",borderRadius:10,padding:"11px 14px",color:"#F1F5F9",fontSize:14,cursor:"pointer",outline:"none",boxSizing:"border-box",minHeight:46};
 
   return (
-    <div style={{minHeight:"100vh",background:"#070C18",fontFamily:"'Inter',-apple-system,sans-serif",paddingBottom:80,color:"#F1F5F9"}}>
+    <div style={{minHeight:"100vh",background:"#070C18",fontFamily:"'Inter',-apple-system,sans-serif",paddingBottom:80,color:"#F1F5F9",overflowX:"hidden"}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         *{box-sizing:border-box;}
@@ -604,9 +604,10 @@ export default function App() {
         .chip-row{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
         .chip-row::-webkit-scrollbar{display:none;}
         .cat-chip{flex-shrink:0;display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:16px;border:1.5px solid;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;min-height:34px;white-space:nowrap;background:transparent;}
-        .dash-grid{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start;}
-        .form-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-        @media(max-width:700px){.dash-grid{grid-template-columns:1fr!important;}.form-2{grid-template-columns:1fr!important;}.hide-sm{display:none!important;}}
+        .dash-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start;}
+        .form-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;}
+        @media(max-width:700px){.dash-grid{grid-template-columns:minmax(0,1fr)!important;}.form-2{grid-template-columns:minmax(0,1fr)!important;}.hide-sm{display:none!important;}}
+        @media(max-width:480px){.hide-xs{display:none!important;}}
         @media(max-width:420px){.tab-txt{display:none;}}
       `}</style>
 
@@ -627,10 +628,10 @@ export default function App() {
               style={{background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:7,padding:"4px 8px",color:"#94A3B8",fontSize:11,cursor:"pointer",outline:"none",fontWeight:600,minHeight:30}}>
               {CURRENCIES.map(c=><option key={c.code} value={c.code} style={{background:"#111827"}}>{c.code} {c.sym}</option>)}
             </select>
-            <button onClick={()=>setShowCatMgr(true)} aria-label="Manage categories" style={{background:"rgba(196,181,253,0.1)",border:"1px solid rgba(196,181,253,0.2)",borderRadius:8,padding:"5px 10px",color:"#C4B5FD",fontSize:11,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4,minHeight:30}}>
+            <button onClick={()=>setShowCatMgr(true)} aria-label="Manage categories" className="hide-xs" style={{background:"rgba(196,181,253,0.1)",border:"1px solid rgba(196,181,253,0.2)",borderRadius:8,padding:"5px 10px",color:"#C4B5FD",fontSize:11,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4,minHeight:30}}>
               <IcoTag/><span className="hide-sm">Categories</span>
             </button>
-            <button onClick={()=>setShowImp(true)} aria-label="Smart import" style={{background:"rgba(110,231,183,0.1)",border:"1px solid rgba(110,231,183,0.2)",borderRadius:8,padding:"5px 10px",color:"#6EE7B7",fontSize:11,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4,minHeight:30}}>
+            <button onClick={()=>setShowImp(true)} aria-label="Smart import" className="hide-xs" style={{background:"rgba(110,231,183,0.1)",border:"1px solid rgba(110,231,183,0.2)",borderRadius:8,padding:"5px 10px",color:"#6EE7B7",fontSize:11,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4,minHeight:30}}>
               <IcoUp/><span className="hide-sm">Import</span>
             </button>
             {/* Settings / API key button — hidden in Claude env */}
